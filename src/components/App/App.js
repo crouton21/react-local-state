@@ -8,17 +8,22 @@ class App extends Component {
 
     this.state = {
       user: {
-        name: '',
-        city: '',
+        name: 'Name',
+        city: 'City',
       }
     };
 
-    this.handleChange = this.handleChange.bind(this);
+    this.handleName = this.handleName.bind(this);
+    this.handleCity = this.handleCity.bind(this);
+
   }
 
-  handleChange(event) {
-    console.log(event.target.value);
-    this.setState({ user: event.target.value });
+  handleName(event) {
+    this.setState({ user: {name:event.target.value} });
+  }
+
+  handleCity(event) {
+    this.setState({ user: {city:event.target.value} });
   }
 
   render() {
@@ -28,9 +33,9 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <input onChange={this.handleChange} />
-        <p>{this.state.user}</p>
-        Luke is from Minnetonka
+        <input onChange={this.handleName} />
+        <input onChange={this.handleCity} />
+        <p>{this.state.user.name} is from {this.state.user.city}</p>
       </div>
     );
   }
